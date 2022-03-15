@@ -44,7 +44,8 @@ const RPGA = (message, S) => {
 		j = (j + S[i]) % 256
 		S = swap(S, i, j)
 		const K = S[(S[i] + S[j]) % 256]
-		result.push((K ^ message.charCodeAt(l)).toString(16))
+		const hex = (K ^ message.charCodeAt(l)).toString(16)
+		result.push(hex.length < 2 ? '0' + hex : hex)
 	}
 
 	console.log(result.join('').toUpperCase())
